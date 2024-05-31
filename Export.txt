@@ -1,0 +1,25 @@
+*Exported contacts:*
+
+Name:Grant
+Phone Number:972-375-4664
+Email Address:grantbcopeland@gmail.com
+Company:DJO
+Birthday:12-24-1994
+Anniversary:
+Group:Friend
+
+Name:Grace
+Phone Number:
+Email Address:
+Company:
+Birthday:
+Anniversary:
+Group:
+
+Name:Jonny
+Phone Number:1290381120
+Email Address:jros@gmail.com
+Company:INCLUDED
+Birthday:1290112
+Anniversary:1203120
+Group:friend

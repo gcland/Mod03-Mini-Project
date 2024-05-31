@@ -54,8 +54,8 @@ def edit_contacts(c): #fix function bugs to return error messages properly (see 
     for x, obj in contacts.items():
         if contacts[x]["Name"].lower() == c.lower():
             while True:
-                b = input(f"Which of {c}'s contact information would you like to change?\n'End' to finish \n >> ")
-                if b.lower() == "end":
+                b = input(f"Which of {c}'s contact information would you like to change?\n'Back' to return to contact selection. \n >> ")
+                if b.lower() == "back":
                     break
                 i=0
                 #maybe try except here
@@ -146,7 +146,25 @@ def delete():
                 break
         if v==0:
             print("No match found for name to delete.")
-        
+
+def export():
+    f = open("Export.txt", "w")
+    f.write("*Exported contacts:*\n")
+
+    with open("Export.txt", "a") as f:
+        for x, obj in contacts.items():
+            f.write("\n")
+            for y in obj:
+                f.write('%s:%s\n' % (y, obj[y]))
+    q = input("Read and display exported file?\n >> ")
+    if q.lower() == "yes":
+        f = open("Export.txt", "r")
+        print(f.read())
+
+def import_file():
+    f = open("Import.txt", "r")
+    print(f.read())
+
 while True:
     try:
         display = input("\n Welcome to the Contact Management System! \n Menu: \n 1. Add a new contact \n 2. Edit an existing contact \n 3. Delete a contact \n 4. Search for a contact \n 5. Display all contacts \n 6. Export all contacts to a text file \n 7. Import contacts from a text file \n 8. Quit \n Please input from the menu above with a number or action: \n >> ")
@@ -160,12 +178,15 @@ while True:
     elif display == "2" or display.lower() == "edit" or display.lower() == "edit an existing contact": #fix function bugs to return error messages properly (see delete funct)
         while True:
             prompt = input("Enter the name of the contact to edit or enter 'display' to view contact list.\n'Back' to return home. \n >> ")
+            e=0
             for x in contacts:
                 if contacts[x]["Name"].lower() == prompt.lower():
                     edit_contacts(prompt)
-                    break
+                    e+=1
             if prompt.lower() == "display":
                 display_contacts()
+            elif e == 1:
+                continue
             elif prompt.lower() == "back":
                 break
             else:
@@ -176,10 +197,10 @@ while True:
         search()
     elif display == "5" or display.lower() == "display" or display.lower() == "display all contacts":
         display_contacts()
-    # elif display == "6" or display.lower() == "export" or display.lower() == "export contacts to a text file":
-    #     export()
-    # elif display == "7" or display.lower() == "import" or display.lower() == "import contats from a text file":
-    #     delete_task()
+    elif display == "6" or display.lower() == "export" or display.lower() == "export contacts to a text file":
+        export()
+    elif display == "7" or display.lower() == "import" or display.lower() == "import contats from a text file":
+        import_file()
     elif display == "8" or display.lower() == "quit":
         print("Thank you for using the Contact Management System! Have a great day!")
         break

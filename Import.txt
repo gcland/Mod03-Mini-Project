@@ -1,0 +1,25 @@
+**Imported contacts:**
+
+Name:Dylan
+Phone Number:512-942-3145
+Email Address:dylanm@zuck.com
+Company: FB
+Birthday: May-15-1995
+Anniversary:
+Group: Friend
+
+Name: Austin
+Phone Number: 512-120-1909
+Email Address: acoop@gmail.com
+Company: DJO
+Birthday:
+Anniversary:
+Group: Work
+
+Name: LT
+Phone Number: 909-123-6531
+Email Address: LLazen@gmail.com
+Company: 
+Birthday:05/18/1996
+Anniversary: 06/14/2024
+Group:Friend
