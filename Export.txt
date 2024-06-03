@@ -9,17 +9,9 @@ Anniversary:
 Group:Friend
 
 Name:Grace
-Phone Number:
+Phone Number:812-145-1298
 Email Address:
-Company:
+Company:LandDev
 Birthday:
-Anniversary:
+Anniversary:04/03/2021
 Group:
-
-Name:Jonny
-Phone Number:1290381120
-Email Address:jros@gmail.com
-Company:INCLUDED
-Birthday:1290112
-Anniversary:1203120
-Group:friend

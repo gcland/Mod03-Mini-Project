@@ -1,4 +1,5 @@
 import os
+import re
 
 contacts = {
 
@@ -23,11 +24,6 @@ contacts = {
     "Anniversary": "",
     "Group": ""
 }
-
-
-
-
-
 
 }
 
@@ -162,8 +158,53 @@ def export():
         print(f.read())
 
 def import_file():
+
+    e = [" "]
     f = open("Import.txt", "r")
-    print(f.read())
+    for line in f:
+
+        name = re.findall(r"Name: (.*?);", line)
+        if name == []:
+            name = e
+        pn = re.findall(r"Phone Number: ([0-9]{3}+[-]+[0-9]{3}+[-]+[0-9]{4});", line)
+        if pn == []:
+            pn = e
+        ea = re.findall(r"Email Address: ([A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Z|a-z]{2,});", line)
+        if ea == []:
+            ea = e
+        comp = re.findall(r"Company: (.*?);", line)
+        if comp == []:
+            comp = e
+        bd = re.findall(r"Birthday: ([0-9]{2}+[/|-]+[0-9]{2}+[/|-]+[0-9]{4});", line)
+        if bd == []:
+            bd = e
+        av = re.findall(r"Anniversary: ([0-9]{2}+[/|-]+[0-9]{2}+[/|-]+[0-9]{4});", line)
+        if av == []:
+            av = e
+        g = re.findall(r"Group: (.*?);", line)
+        if g == []:
+            g = e
+
+        for x in contacts.keys():
+            k = int(x[6])
+
+        
+        contacts["Person"+(str(k+1))] = {
+
+        "Name": name[0],
+        "Phone Number": pn[0],
+        "Email Address": ea[0],
+        "Company": comp[0],
+        "Birthday": bd[0],
+        "Anniversary": av[0],
+        "Group": g[0]
+        }
+
+    print("\nContact List:")
+    for x, obj in contacts.items():
+        print()
+        for y in obj:
+            print(y + ":", obj[y])
 
 while True:
     try:
