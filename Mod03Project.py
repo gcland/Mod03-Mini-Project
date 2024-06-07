@@ -17,9 +17,9 @@ contacts = {
 "Person2": 
 {
     "Name":"Grace",
-    "Phone Number": "",
+    "Phone Number": "512-643-8127",
     "Email Address": "",
-    "Company": "",
+    "Company": "LandDev",
     "Birthday": "",
     "Anniversary": "",
     "Group": ""
@@ -54,7 +54,6 @@ def edit_contacts(c): #fix function bugs to return error messages properly (see 
                 if b.lower() == "back":
                     break
                 i=0
-                #maybe try except here
                 for y in obj:
                     if y.lower() == b.lower():
                         i+=1
@@ -152,6 +151,7 @@ def export():
             f.write("\n")
             for y in obj:
                 f.write('%s:%s\n' % (y, obj[y]))
+
     q = input("Read and display exported file?\n >> ")
     if q.lower() == "yes":
         f = open("Export.txt", "r")
@@ -160,7 +160,21 @@ def export():
 def import_file():
 
     e = [" "]
-    f = open("Import.txt", "r")
+    while True:
+        try:
+            imp = input("Enter a file to import contact info from:\n >> ")
+            f = open(imp, "r")
+            if f.name.lower() == 'corrupt.txt':
+                raise Exception
+        except FileNotFoundError:
+            print("Error. File not found. Please try again.")
+        except Exception:
+            print("Error! Corrupt file!")
+        else:
+            print(f"Importing data from {imp}.")
+            break
+        
+    
     for line in f:
 
         name = re.findall(r"Name: (.*?);", line)
